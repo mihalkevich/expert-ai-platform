@@ -14,6 +14,8 @@ RUN npm ci
 
 # Copy rest of source and build
 COPY . .
+# Ensure public dir exists for Docker COPY
+RUN mkdir -p public
 RUN npm run build
 
 FROM node:20.19.6-slim AS runner
